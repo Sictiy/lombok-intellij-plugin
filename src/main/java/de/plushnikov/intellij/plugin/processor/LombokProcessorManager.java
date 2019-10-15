@@ -5,6 +5,7 @@ import de.plushnikov.intellij.plugin.processor.clazz.DataProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.EqualsAndHashCodeProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.GetterProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.SetterProcessor;
+import de.plushnikov.intellij.plugin.processor.clazz.SingleInstanceProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.ToStringProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.UtilityClassProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.ValueProcessor;
@@ -74,6 +75,7 @@ public class LombokProcessorManager {
       ServiceManager.getService(SetterProcessor.class),
       ServiceManager.getService(ToStringProcessor.class),
       ServiceManager.getService(WitherProcessor.class),
+      ServiceManager.getService(SingleInstanceProcessor.class),
 
       ServiceManager.getService(BuilderPreDefinedInnerClassFieldProcessor.class),
       ServiceManager.getService(BuilderPreDefinedInnerClassMethodProcessor.class),

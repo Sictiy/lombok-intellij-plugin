@@ -5,6 +5,7 @@ import de.plushnikov.intellij.plugin.processor.clazz.DataProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.EqualsAndHashCodeProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.GetterProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.SetterProcessor;
+import de.plushnikov.intellij.plugin.processor.clazz.SingleInstanceProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.ToStringProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.UtilityClassProcessor;
 import de.plushnikov.intellij.plugin.processor.clazz.ValueProcessor;
@@ -56,6 +57,7 @@ public class DelombokEverythingAction extends AbstractDelombokAction {
       ServiceManager.getService(SetterProcessor.class),
       ServiceManager.getService(EqualsAndHashCodeProcessor.class),
       ServiceManager.getService(ToStringProcessor.class),
+      ServiceManager.getService(SingleInstanceProcessor.class),
 
       ServiceManager.getService(CommonsLogProcessor.class), ServiceManager.getService(JBossLogProcessor.class), ServiceManager.getService(Log4jProcessor.class),
       ServiceManager.getService(Log4j2Processor.class), ServiceManager.getService(LogProcessor.class), ServiceManager.getService(Slf4jProcessor.class),
