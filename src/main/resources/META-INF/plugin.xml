@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <idea-plugin url="https://github.com/mplushnikov/lombok-intellij-plugin">
-  <id>Lombook Plugin</id>
-  <name>Lombok</name>
+  <id>Lombook Plugin @ Sictiy.xu</id>
+  <name>Lombok@Sictiy.xu</name>
   <vendor url="https://github.com/mplushnikov/lombok-intellij-plugin" email="lombokplugin@plushnikov.de">Michail
     Plushnikov
   </vendor>

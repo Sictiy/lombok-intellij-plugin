@@ -1,12 +1,11 @@
 package de.plushnikov.intellij.plugin.processor.clazz;
 
 import de.plushnikov.intellij.plugin.problem.ProblemBuilder;
+import de.plushnikov.intellij.plugin.processor.LombokPsiElementUsage;
 import de.plushnikov.intellij.plugin.psi.LombokLightMethodBuilder;
 import de.plushnikov.intellij.plugin.util.PsiClassUtil;
 import de.plushnikov.intellij.plugin.util.PsiMethodUtil;
-import lombok.SingleInstance;
 
-import java.lang.annotation.Annotation;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -16,9 +15,11 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.PsiAnnotation;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiModifier;
+import com.sictiy.processor.single.SingleInstance;
 
 /**
  * @author sictiy.xu
@@ -28,9 +29,9 @@ public class SingleInstanceProcessor extends AbstractClassProcessor
 {
   private static final String METHOD_NAME = "getInstance";
 
-  protected SingleInstanceProcessor(@NotNull Class<? extends PsiElement> supportedClass, @NotNull Class<? extends Annotation> supportedAnnotationClass)
+  protected SingleInstanceProcessor()
   {
-    super(PsiClass.class, SingleInstance.class);
+    super(PsiMethod.class, SingleInstance.class);
   }
 
   @Override
@@ -90,8 +91,16 @@ public class SingleInstanceProcessor extends AbstractClassProcessor
 
     final LombokLightMethodBuilder methodBuilder = new LombokLightMethodBuilder(psiManager, METHOD_NAME);
     methodBuilder.withMethodReturnType(PsiClassUtil.getTypeWithGenerics(psiClass));
+    methodBuilder.withContainingClass(psiClass);
+    methodBuilder.withNavigationElement(psiAnnotation);
     methodBuilder.withModifier(PsiModifier.PUBLIC);
     methodBuilder.withModifier(PsiModifier.STATIC);
     return methodBuilder;
+  }
+
+  @Override
+  public LombokPsiElementUsage checkFieldUsage(@NotNull PsiField psiField, @NotNull PsiAnnotation psiAnnotation)
+  {
+    return LombokPsiElementUsage.NONE;
   }
 }

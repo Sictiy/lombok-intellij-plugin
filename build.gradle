@@ -7,6 +7,7 @@ plugins {
 repositories {
   jcenter()
   mavenCentral()
+  mavenLocal()
   maven { url "https://www.jitpack.io" }
 }
 // Fix Bug https://github.com/jitpack/jitpack.io/issues/3973
@@ -92,6 +93,7 @@ configurations {
 
 dependencies {
   lombok group: 'org.projectlombok', name: 'lombok', version: '1.18.10', classifier: 'sources', ext: 'jar'
+  compile group: 'Sictiy', name: 'annotation-processor', version: '1.0-SNAPSHOT'
 
   testCompile group: 'junit', name: 'junit', version: '4.12'
   testCompile group: 'org.mockito', name: 'mockito-core', version: '3.1.0'
